@@ -1,0 +1,19 @@
+{
+  "name": "clean-code-kata-exam",
+  "version": "1.0.0",
+  "description": "Kata for clean code exam",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OliPaul/clean-code-kata-exam.git"
+  },
+  "author": "Paul Olivier AHOUA",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OliPaul/clean-code-kata-exam/issues"
+  },
+  "homepage": "https://github.com/OliPaul/clean-code-kata-exam#readme"
+}
