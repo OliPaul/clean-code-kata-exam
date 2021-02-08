@@ -19,10 +19,14 @@ module.exports = {
         var oBook = null;
 
         books.forEach((book) => {
-            const aBook = JSON.parse(book);
-            if (aBook.bookName == bookName) {
-                oBook = aBook;
-                return;
+            try {
+                const aBook = JSON.parse(book);
+                if (aBook.bookName == bookName) {
+                    oBook = aBook;
+                    return;
+                }
+            } catch (e) {
+                //Avoid break exection
             }
         })
 
