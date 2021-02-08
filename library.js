@@ -1,20 +1,9 @@
-const fs = require("fs");
 const book = require("./book");
 
 const roleEnum = {
     LIBRARY: 1,
     MEMBER: 2,
     GUEST: 3
-}
-
-function storeBook(book){
-    fs.appendFile("books.txt", book + "\r\n", function(error){
-        if(error){
-            return "Unable to store this book."
-        }
-        return "OK !";
-    });
-    
 }
 
 function hasLibraryRole(role){
@@ -36,10 +25,12 @@ module.exports = {
             authorName: authorName
         }
         //Store the book
-        const res = storeBook(JSON.stringify(book));
+        const res = book.addBook(JSON.stringify(book));
         console.log(res);
     },
-    displayAllBook: function(){
-        
+    displayAllBooks: function(){
+        const books = book.getAllBooks();
+
+        console.log(books);
     }
 }
