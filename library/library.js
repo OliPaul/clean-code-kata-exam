@@ -1,4 +1,4 @@
-const bookFile = require("./book");
+const bookFile = require("../book/book");
 const LibraryManager = require("./library_manager");
 
 module.exports = {
@@ -6,8 +6,7 @@ module.exports = {
         const userRole = user.role
         //Check if user has authorization to perform this action
         if(!LibraryManager.hasLibraryRole(userRole))  {
-            console.log("Access denied");
-            return;
+            return "Access denied";
         }
 
         //Create book object
@@ -17,11 +16,11 @@ module.exports = {
         }
         //Store the book
         const res = bookFile.addBook(JSON.stringify(book));
-        console.log(res);
+        return res;
     },
     displayAllBooks: function(){
         const books = bookFile.getAllBooks();
-        console.log(books);
+        return books;
     },
     borrowBook: function(bookList, user){
         const userRole = user.role
@@ -30,26 +29,22 @@ module.exports = {
 
         //Check if user has authorization to perform this action
         if(!LibraryManager.hasMemberRole(userRole))  {
-            console.log("You cannot borrow a book.");
-            return;
+            return "You cannot borrow a book.";
         }
 
         //check if user has pick a book
         if(bookList.length == 0){
-            console.log("You haven't choose a book.");
-            return;
+            return "You haven't choose a book.";
         }
 
         //check book number
         if(bookList.length > 3){
-            console.log("You can borrow only 3 books at a time.");
-            return;
+            return "You can borrow only 3 books at a time.";
         }
 
         //Check if book exist
         if(!LibraryManager.booksExist(bookList, bookFile)){
-            console.log("A book among your selection does not exist. Please try again!");
-            return;
+            return "A book among your selection does not exist. Please try again!";
         }
 
         message = LibraryManager.storeBorrow(bookList, userID);
@@ -62,14 +57,12 @@ module.exports = {
         var booksToDelete = [];
         //Check if user has authorization to perform this action
         if(!LibraryManager.hasMemberRole(userRole))  {
-            console.log("Access Denied !");
-            return;
+            return "Access Denied !";
         }
 
         //check if user has a book to return
         if(bookList.length == 0){
-            console.log("You don't have set a book.");
-            return;
+            return "You don't have set a book.";
         }
 
         bookList.forEach((book) => {
@@ -77,5 +70,7 @@ module.exports = {
         })
 
         LibraryManager.deleteBorrow(booksToDelete);
+
+        return "Book successfully returned.";
     }
 }

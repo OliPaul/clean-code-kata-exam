@@ -1,4 +1,2 @@
-{"bookName": "Test","authorName": "Test"}
-{"bookName": "Test1","authorName": "Test"}
-{"bookName": "Test2","authorName": "Test"}
-{"bookName": "Test3","authorName": "Test"}
+{"bookName":"Alibaba et les 40 voleurs","authorName":"Inconnu"}
+{"bookName":"Alibaba et les 40 voleurs","authorName":"Inconnu"}

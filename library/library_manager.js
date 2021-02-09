@@ -1,6 +1,6 @@
 const fs = require('fs');
-const {roleEnum} = require("./role");
-const fileManager = require("./file_manager");
+const {roleEnum} = require("../user/role");
+const fileManager = require("../dao/file_manager");
 
 const removeLines = (data, lines = []) => {
 
@@ -47,6 +47,7 @@ module.exports = {
     },
     
     storeBorrow: function(bookList, userID){
+        var message = "";
         //Create the borrow object
         bookList.forEach((book) => {
     
@@ -59,11 +60,13 @@ module.exports = {
             //Store the borrow
             var isBorrowStored = fileManager.write("borrowing.txt", JSON.stringify(oBorrow));
             if(!isBorrowStored){
-                return "Something went wrong !";
+                message = "Something went wrong !";
             }
     
-            return "OK !"
-        })
+            message = "OK !"
+        });
+
+        return message;
     },
 
     deleteBorrow: function(dataToDelete){

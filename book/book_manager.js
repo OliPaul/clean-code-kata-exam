@@ -1,4 +1,4 @@
-const fileManager = require('./file_manager');
+const fileManager = require('../dao/file_manager');
 
 module.exports = {
     storeBook: function (book) {
